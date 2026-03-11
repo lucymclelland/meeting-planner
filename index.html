@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Meeting Planner</h1>
+        <p class="subtitle">Find the best meeting times across time zones</p>
+
+        <div id="participants">
+            <div class="participant" data-index="0">
+                <h3>Participant 1</h3>
+                <div class="form-row">
+                    <label>
+                        Time Zone
+                        <input type="text" class="tz-input" list="tz-list" placeholder="Search city, e.g. New York" required>
+                    </label>
+                </div>
+                <div class="form-row hours-row">
+                    <label>
+                        Start
+                        <select class="work-start"></select>
+                    </label>
+                    <label>
+                        End
+                        <select class="work-end"></select>
+                    </label>
+                </div>
+            </div>
+
+            <div class="participant" data-index="1">
+                <h3>Participant 2</h3>
+                <div class="form-row">
+                    <label>
+                        Time Zone
+                        <input type="text" class="tz-input" list="tz-list" placeholder="Search city, e.g. London" required>
+                    </label>
+                </div>
+                <div class="form-row hours-row">
+                    <label>
+                        Start
+                        <select class="work-start"></select>
+                    </label>
+                    <label>
+                        End
+                        <select class="work-end"></select>
+                    </label>
+                </div>
+            </div>
+
+            <div class="participant hidden" data-index="2">
+                <h3>Participant 3</h3>
+                <div class="form-row">
+                    <label>
+                        Time Zone
+                        <input type="text" class="tz-input" list="tz-list" placeholder="Search city, e.g. Tokyo">
+                    </label>
+                </div>
+                <div class="form-row hours-row">
+                    <label>
+                        Start
+                        <select class="work-start"></select>
+                    </label>
+                    <label>
+                        End
+                        <select class="work-end"></select>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row date-row">
+            <label>
+                Meeting Date
+                <input type="date" id="meeting-date">
+            </label>
+        </div>
+
+        <div class="actions">
+            <button id="toggle-third" class="btn-secondary">+ Add Participant 3</button>
+            <button id="find-times" class="btn-primary">Find Meeting Times</button>
+        </div>
+
+        <datalist id="tz-list"></datalist>
+
+        <p id="error-message"></p>
+
+        <div id="results" class="hidden">
+            <h2>Suggested Meeting Times</h2>
+            <div id="timeline-container"></div>
+            <div id="results-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

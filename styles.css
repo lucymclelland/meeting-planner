@@ -1,0 +1,366 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    color-scheme: light;
+    --bg: #f4efe6;
+    --panel: #fffaf2;
+    --panel-border: #d8c9af;
+    --text: #2c2418;
+    --muted: #6c604d;
+    --accent: #1f6f5f;
+    --accent-dark: #174f44;
+    --secondary: #efe4d1;
+    --danger: #a64232;
+    --shadow: 0 18px 45px rgba(76, 55, 24, 0.12);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(203, 170, 111, 0.25), transparent 30%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+}
+
+.container {
+    width: min(920px, calc(100% - 2rem));
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+    font-weight: 600;
+}
+
+h1 {
+    margin-bottom: 0.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.subtitle,
+.helper-text,
+.result-note,
+.empty-state,
+.error-text {
+    color: var(--muted);
+}
+
+.helper-text {
+    margin-bottom: 1.5rem;
+}
+
+#participants {
+    display: grid;
+    gap: 1rem;
+}
+
+.participant {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+}
+
+.form-row {
+    margin-bottom: 0.85rem;
+}
+
+.hours-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+label {
+    display: block;
+    font-size: 0.95rem;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    margin-top: 0.35rem;
+    padding: 0.75rem 0.85rem;
+    font: inherit;
+    border-radius: 12px;
+    border: 1px solid #b9ab92;
+}
+
+input:focus,
+select:focus,
+button:focus {
+    outline: 2px solid rgba(31, 111, 95, 0.25);
+    outline-offset: 2px;
+}
+
+.actions {
+    display: flex;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+button {
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    flex: 1 1 220px;
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+.btn-primary:hover {
+    background: var(--accent-dark);
+}
+
+.btn-secondary {
+    flex: 1 1 220px;
+    background: var(--secondary);
+    color: var(--text);
+}
+
+.hidden {
+    display: none;
+}
+
+#error-message {
+    margin: 0 0 1rem;
+    color: var(--danger);
+    font-weight: 600;
+}
+
+#results {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--panel-border);
+}
+
+.result-card {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 14px;
+    background: rgba(239, 228, 209, 0.45);
+    border: 1px solid rgba(185, 171, 146, 0.7);
+}
+
+.result-title {
+    margin: 0 0 0.35rem;
+    font-size: 1.1rem;
+}
+
+.result-meta {
+    margin: 0.2rem 0;
+}
+
+.result-note {
+    margin-top: 0.35rem;
+    font-size: 0.95rem;
+}
+
+.empty-state {
+    padding: 1rem;
+    border: 1px dashed var(--panel-border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.date-row {
+    max-width: 260px;
+}
+
+/* ── Timeline ──────────────────────────────────────── */
+
+#timeline-container {
+    margin-bottom: 1.5rem;
+}
+
+.tl-title {
+    margin: 0 0 0.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.tl-utc-note {
+    color: var(--muted);
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+.timeline-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--panel-border);
+}
+
+.timeline {
+    min-width: 560px;
+}
+
+.tl-row {
+    display: grid;
+    grid-template-columns: 150px repeat(24, 1fr);
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.tl-row:last-child {
+    border-bottom: none;
+}
+
+.tl-label {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    background: rgba(239, 228, 209, 0.5);
+    border-right: 1px solid var(--panel-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 48px;
+}
+
+.tl-tz-name {
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.tl-tz-full {
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 136px;
+    display: block;
+}
+
+.tl-header .tl-label {
+    min-height: 28px;
+    font-weight: 600;
+}
+
+.tl-cell {
+    border-right: 1px solid rgba(185, 171, 146, 0.2);
+    min-height: 48px;
+    cursor: default;
+    transition: filter 0.12s;
+}
+
+.tl-cell:last-child {
+    border-right: none;
+}
+
+.tl-cell:hover {
+    filter: brightness(0.85);
+}
+
+.tl-hour-label {
+    font-size: 0.68rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    background: rgba(239, 228, 209, 0.3);
+}
+
+.tl-unavailable {
+    /* Amber + diagonal hatching — "blocked/warning" pattern */
+    background-color: #f5c26b;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.12) 0px,
+        rgba(0, 0, 0, 0.12) 2px,
+        transparent      2px,
+        transparent      8px
+    );
+}
+
+.tl-available {
+    /* Light blue + evenly spaced dots — "open/available" pattern */
+    background-color: #7ab8f5;
+    background-image: radial-gradient(
+        circle,
+        rgba(0, 0, 0, 0.18) 1.5px,
+        transparent        1.5px
+    );
+    background-size: 8px 8px;
+}
+
+.tl-overlap {
+    /* Deep blue + fine crosshatch — "confirmed overlap" pattern */
+    background-color: #1a5fa8;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.15) 0px,
+            rgba(255, 255, 255, 0.15) 1px,
+            transparent              1px,
+            transparent              7px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.15) 0px,
+            rgba(255, 255, 255, 0.15) 1px,
+            transparent              1px,
+            transparent              7px
+        );
+}
+
+.tl-legend {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 0.6rem;
+    font-size: 0.88rem;
+    flex-wrap: wrap;
+    align-items: center;
+    color: var(--muted);
+}
+
+.legend-swatch {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 4px;
+    border: 1px solid rgba(0,0,0,0.15);
+}
+/* Swatches inherit the same background-color + background-image rules from the
+   shared class names, so they automatically match the grid cells. */
+
+/* ── Responsive ─────────────────────────────────────── */
+
+@media (max-width: 640px) {
+    .container {
+        margin: 1rem auto;
+        padding: 1.25rem;
+    }
+
+    .hours-row,
+    .actions {
+        grid-template-columns: 1fr;
+        display: grid;
+    }
+
+    .date-row {
+        max-width: 100%;
+    }
+}
